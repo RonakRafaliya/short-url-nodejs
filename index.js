@@ -11,9 +11,9 @@ const userRoute = require("./routes/user");
 const app = express();
 const PORT = 3001;
 
-connectToMongoDB("mongodb://localhost:27017/short-url").then(() =>
-  console.log("MongoDB started....!!!"),
-);
+connectToMongoDB(
+  process.env.MONGODB ?? "mongodb://localhost:27017/short-url",
+).then(() => console.log("Mongodb connected"));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
